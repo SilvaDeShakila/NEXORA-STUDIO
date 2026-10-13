@@ -1,0 +1,109 @@
+# =====================================================================
+# NEXORA STUDIO — Official Git Exclusion Rules (.gitignore)
+# =====================================================================
+
+# 1. Node & JavaScript Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# 2. Production Build Outputs
+dist/
+build/
+out/
+.next/
+
+# 3. Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# 4. Python Bytecode & Compilation Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# 5. Testing & Test Artifacts
+.pytest_cache/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+htmlcov/
+.tox/
+.nox/
+.hypothesis/
+
+# 6. Environment Configurations & Secrets
+.env
+.env.*
+!.env.example
+
+# 7. Media Processing, Uploads & Temporary Directories
+temp/
+uploads/
+exports/
+workspace/
+tmp/
+*.tmp
+*.part
+*.mp4.part
+nexora_studio/
+
+# 8. Log Files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+uvicorn.log
+
+# 9. IDE & Editor Configuration
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# 10. Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini

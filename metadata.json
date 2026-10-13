@@ -1,0 +1,7 @@
+{
+  "name": "NEXORA STUDIO - Free AI Video & Photo Editing Platform",
+  "description": "Professional video and photo editing platform featuring multi-track timeline, keyframe animation, transitions, photo editor, beat sync, 4K export engine, and AI creative tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
