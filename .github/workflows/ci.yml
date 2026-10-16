@@ -2,36 +2,37 @@ name: NEXORA STUDIO CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   frontend:
     name: Frontend (React + TypeScript)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js 20
-        uses: actions/setup-node@v4
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: 'npm'
+          bun-version: latest
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: bun install --frozen-lockfile
 
       - name: Typecheck TypeScript
-        run: npm run lint
+        run: bun run lint
 
       - name: Build production bundle
-        run: npm run build
+        run: bun run build
 
   backend:
     name: Backend (Python FastAPI + FFmpeg)
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,7 +41,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
 
       - name: Install system FFmpeg
         run: |
@@ -55,12 +57,10 @@ jobs:
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r backend/requirements.txt
+          python -m pip install -r backend/requirements.txt
 
-      - name: Validate Python syntax (flake8 / compilation)
-        run: |
-          python -m compileall backend/
+      - name: Validate Python syntax
+        run: python -m compileall -q backend/
 
       - name: Run backend Pytest suite
-        run: |
-          python -m pytest backend/tests/ -v
+        run: python -m pytest backend/tests/ -v
